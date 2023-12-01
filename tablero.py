@@ -1,6 +1,7 @@
 from casilla import Casilla
 from random import random
 
+
 class Tablero():
     def __init__(self,tamaño, prob_bomba):
         self.tamaño = tamaño
@@ -14,10 +15,13 @@ class Tablero():
 
     def set_tablero(self):
         self.tablero = []
+
         for row in range(self.tamaño[0]):
             row = []
             for col in range(self.tamaño[1]):
+
                 bomba = random() < self.prob_bomba
+                    
                 if (not bomba):
                     self.num_nobombas +=1
                 casilla = Casilla(bomba)
