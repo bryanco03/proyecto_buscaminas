@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>casilla &mdash; Buscaminas 05/12/23 documentation</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=80d5e7a1" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=19f00094" />
+
+  
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="../_static/jquery.js?v=5d32c60e"></script>
+        <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="../_static/documentation_options.js?v=ea9e61f1"></script>
+        <script src="../_static/doctools.js?v=888ff710"></script>
+        <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            Buscaminas
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../modules.html">proyecto_buscaminas</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Buscaminas</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="index.html">Module code</a></li>
+      <li class="breadcrumb-item active">casilla</li>
+      <li class="wy-breadcrumbs-aside">
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <h1>Source code for casilla</h1><div class="highlight"><pre>
+<div class="viewcode-block" id="Casilla">
+<a class="viewcode-back" href="../casilla.html#casilla.Casilla">[docs]</a>
+<span></span><span class="k">class</span> <span class="nc">Casilla</span><span class="p">():</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Clase que representa una casilla en el juego.</span>
+
+<span class="sd">    Atributos:</span>
+<span class="sd">    - bomba (bool): Indica si la casilla contiene una bomba.</span>
+<span class="sd">    - clicked (bool): Indica si la casilla ha sido seleccionada por el jugador.</span>
+<span class="sd">    - bandera (bool): Indica si se ha colocado una bandera en la casilla.</span>
+<span class="sd">    - vecinos (list): Lista de casillas vecinas a la actual.</span>
+<span class="sd">    - num_alrededor (int): Número de bombas alrededor de la casilla.</span>
+
+<span class="sd">    Métodos:</span>
+<span class="sd">    - get_bomba(): Retorna el valor del atributo &#39;bomba&#39;.</span>
+<span class="sd">    - get_clicked(): Retorna el valor del atributo &#39;clicked&#39;.</span>
+<span class="sd">    - get_bandera(): Retorna el valor del atributo &#39;bandera&#39;.</span>
+<span class="sd">    - set_vecinos(vecinos): Establece la lista de casillas vecinas y actualiza &#39;num_alrededor&#39;.</span>
+<span class="sd">    - set_num_alrededor(): Calcula el número de bombas alrededor de la casilla.</span>
+<span class="sd">    - get_num_alrededor(): Retorna el valor del atributo &#39;num_alrededor&#39;.</span>
+<span class="sd">    - toggle_bandera(): Cambia el estado del atributo &#39;bandera&#39;.</span>
+<span class="sd">    - click(): Marca la casilla como seleccionada por el jugador.</span>
+<span class="sd">    - get_vecinos(): Retorna la lista de casillas vecinas.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">bomba</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Inicializa una instancia de Casilla.</span>
+
+<span class="sd">        Parámetros:</span>
+<span class="sd">        - bomba (bool): Indica si la casilla contiene una bomba.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">bomba</span> <span class="o">=</span> <span class="n">bomba</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">clicked</span> <span class="o">=</span> <span class="kc">False</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">bandera</span> <span class="o">=</span> <span class="kc">False</span>
+
+<div class="viewcode-block" id="Casilla.get_bomba">
+<a class="viewcode-back" href="../casilla.html#casilla.Casilla.get_bomba">[docs]</a>
+    <span class="k">def</span> <span class="nf">get_bomba</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Retorna el valor del atributo &#39;bomba&#39;.&quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">bomba</span></div>
+
+
+<div class="viewcode-block" id="Casilla.get_clicked">
+<a class="viewcode-back" href="../casilla.html#casilla.Casilla.get_clicked">[docs]</a>
+    <span class="k">def</span> <span class="nf">get_clicked</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Retorna el valor del atributo &#39;clicked&#39;.&quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">clicked</span> </div>
+
+
+<div class="viewcode-block" id="Casilla.get_bandera">
+<a class="viewcode-back" href="../casilla.html#casilla.Casilla.get_bandera">[docs]</a>
+    <span class="k">def</span> <span class="nf">get_bandera</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Retorna el valor del atributo &#39;bandera&#39;.&quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">bandera</span></div>
+
+
+<div class="viewcode-block" id="Casilla.set_vecinos">
+<a class="viewcode-back" href="../casilla.html#casilla.Casilla.set_vecinos">[docs]</a>
+    <span class="k">def</span> <span class="nf">set_vecinos</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">vecinos</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Establece la lista de casillas vecinas y actualiza &#39;num_alrededor&#39;.</span>
+
+<span class="sd">        Parámetros:</span>
+<span class="sd">        - vecinos (list): Lista de casillas vecinas.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">vecinos</span> <span class="o">=</span> <span class="n">vecinos</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">set_num_alrededor</span><span class="p">()</span></div>
+
+
+<div class="viewcode-block" id="Casilla.set_num_alrededor">
+<a class="viewcode-back" href="../casilla.html#casilla.Casilla.set_num_alrededor">[docs]</a>
+    <span class="k">def</span> <span class="nf">set_num_alrededor</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Calcula el número de bombas alrededor de la casilla.&quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">num_alrededor</span> <span class="o">=</span> <span class="mi">0</span>
+        <span class="k">for</span> <span class="n">casilla</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">vecinos</span><span class="p">:</span>
+            <span class="k">if</span> <span class="n">casilla</span><span class="o">.</span><span class="n">get_bomba</span><span class="p">():</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">num_alrededor</span> <span class="o">+=</span><span class="mi">1</span></div>
+
+
+
+<div class="viewcode-block" id="Casilla.get_num_alrededor">
+<a class="viewcode-back" href="../casilla.html#casilla.Casilla.get_num_alrededor">[docs]</a>
+    <span class="k">def</span> <span class="nf">get_num_alrededor</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Retorna el valor del atributo &#39;num_alrededor&#39;.&quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">num_alrededor</span></div>
+
+
+<div class="viewcode-block" id="Casilla.toggle_bandera">
+<a class="viewcode-back" href="../casilla.html#casilla.Casilla.toggle_bandera">[docs]</a>
+    <span class="k">def</span> <span class="nf">toggle_bandera</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Cambia el estado del atributo &#39;bandera&#39;.&quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">bandera</span> <span class="o">=</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">bandera</span></div>
+
+
+<div class="viewcode-block" id="Casilla.click">
+<a class="viewcode-back" href="../casilla.html#casilla.Casilla.click">[docs]</a>
+    <span class="k">def</span> <span class="nf">click</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Marca la casilla como seleccionada por el jugador.&quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">clicked</span><span class="o">=</span><span class="kc">True</span></div>
+
+
+<div class="viewcode-block" id="Casilla.get_vecinos">
+<a class="viewcode-back" href="../casilla.html#casilla.Casilla.get_vecinos">[docs]</a>
+    <span class="k">def</span> <span class="nf">get_vecinos</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Retorna la lista de casillas vecinas.&quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">vecinos</span></div>
+</div>
+
+</pre></div>
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2023, Bryan Cortés, Adrían Angulo, Danny Solórzano.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

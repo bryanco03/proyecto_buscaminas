@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="./">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>game module &mdash; Buscaminas 05/12/23 documentation</title>
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=80d5e7a1" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=19f00094" />
+
+  
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="_static/jquery.js?v=5d32c60e"></script>
+        <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="_static/documentation_options.js?v=ea9e61f1"></script>
+        <script src="_static/doctools.js?v=888ff710"></script>
+        <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="main module" href="main.html" />
+    <link rel="prev" title="casilla module" href="casilla.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="index.html" class="icon icon-home">
+            Buscaminas
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="modules.html">proyecto_buscaminas</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="boton.html">boton module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="casilla.html">casilla module</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">game module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#game.Game"><code class="docutils literal notranslate"><span class="pre">Game</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#game.Game.actualizar_display"><code class="docutils literal notranslate"><span class="pre">Game.actualizar_display()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#game.Game.actualizar_display_juego"><code class="docutils literal notranslate"><span class="pre">Game.actualizar_display_juego()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#game.Game.cargar_imagenes"><code class="docutils literal notranslate"><span class="pre">Game.cargar_imagenes()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#game.Game.get_font"><code class="docutils literal notranslate"><span class="pre">Game.get_font()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#game.Game.get_imagen"><code class="docutils literal notranslate"><span class="pre">Game.get_imagen()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#game.Game.handleclick"><code class="docutils literal notranslate"><span class="pre">Game.handleclick()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#game.Game.juego_terminado"><code class="docutils literal notranslate"><span class="pre">Game.juego_terminado()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#game.Game.menu"><code class="docutils literal notranslate"><span class="pre">Game.menu()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#game.Game.mostrar"><code class="docutils literal notranslate"><span class="pre">Game.mostrar()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#game.Game.opciones"><code class="docutils literal notranslate"><span class="pre">Game.opciones()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#game.Game.play"><code class="docutils literal notranslate"><span class="pre">Game.play()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#game.Game.run"><code class="docutils literal notranslate"><span class="pre">Game.run()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="main.html">main module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tablero.html">tablero module</a></li>
+</ul>
+</li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">Buscaminas</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="modules.html">proyecto_buscaminas</a></li>
+      <li class="breadcrumb-item active">game module</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/game.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="module-game">
+<span id="game-module"></span><h1>game module<a class="headerlink" href="#module-game" title="Link to this heading"></a></h1>
+<dl class="py class">
+<dt class="sig sig-object py" id="game.Game">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">game.</span></span><span class="sig-name descname"><span class="pre">Game</span></span><a class="reference internal" href="_modules/game.html#Game"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#game.Game" title="Link to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>Clase principal que gestiona el juego.</p>
+<p>Atributos:
+- tablero (Tablero): Representa el tablero del juego.
+- tamaño (tuple): Dimensiones de la ventana del juego.
+- size (tuple): Dimensiones del tablero.
+- prob_bomba (float): Probabilidad de que una casilla contenga una bomba.
+- tamaño_casilla (tuple): Tamaño de cada casilla en píxeles.
+- screen (pygame.Surface): Superficie de la ventana del juego.
+- images (dict): Diccionario que relaciona nombres de imágenes a superficies.</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="game.Game.actualizar_display">
+<span class="sig-name descname"><span class="pre">actualizar_display</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">mensaje</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/game.html#Game.actualizar_display"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#game.Game.actualizar_display" title="Link to this definition"></a></dt>
+<dd><p>Actualiza la superficie de la ventana del juego.</p>
+<p>Parámetros:
+- mensaje (str): Texto que se muestra en la barra de título.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="game.Game.actualizar_display_juego">
+<span class="sig-name descname"><span class="pre">actualizar_display_juego</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/game.html#Game.actualizar_display_juego"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#game.Game.actualizar_display_juego" title="Link to this definition"></a></dt>
+<dd><p>Actualiza la superficie de la ventana del juego según las dimensiones del tablero.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="game.Game.cargar_imagenes">
+<span class="sig-name descname"><span class="pre">cargar_imagenes</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/game.html#Game.cargar_imagenes"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#game.Game.cargar_imagenes" title="Link to this definition"></a></dt>
+<dd><p>Carga las imágenes necesarias para el juego.</p>
+<p>Las imágenes se escalan al tamaño de las casillas del tablero.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="game.Game.get_font">
+<span class="sig-name descname"><span class="pre">get_font</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">tamaño</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/game.html#Game.get_font"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#game.Game.get_font" title="Link to this definition"></a></dt>
+<dd><p>Retorna una fuente de Pygame con el tamaño dado.</p>
+<p>Parámetros:
+- tamaño (int): Tamaño de la fuente.</p>
+<p>Retorna:
+- pygame.font.Font: Objeto de fuente de Pygame.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="game.Game.get_imagen">
+<span class="sig-name descname"><span class="pre">get_imagen</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">casilla</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/game.html#Game.get_imagen"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#game.Game.get_imagen" title="Link to this definition"></a></dt>
+<dd><p>Retorna la imagen correspondiente a una casilla.</p>
+<p>Parámetros:
+- casilla (Casilla): Casilla del tablero.</p>
+<p>Retorna:
+- pygame.Surface: Superficie de la imagen.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="game.Game.handleclick">
+<span class="sig-name descname"><span class="pre">handleclick</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">posicion</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">right_click</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/game.html#Game.handleclick"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#game.Game.handleclick" title="Link to this definition"></a></dt>
+<dd><p>Maneja el clic del mouse en una casilla del tablero.</p>
+<p>Parámetros:
+- posicion (tuple): Posición del clic del mouse.
+- right_click (bool): Indica si el clic fue con el botón derecho.</p>
+<p>Actualiza el estado del tablero según la interacción del jugador.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="game.Game.juego_terminado">
+<span class="sig-name descname"><span class="pre">juego_terminado</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">mensaje</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/game.html#Game.juego_terminado"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#game.Game.juego_terminado" title="Link to this definition"></a></dt>
+<dd><p>Muestra la pantalla de juego terminado.</p>
+<p>Permite al jugador volver a jugar o salir del juego.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="game.Game.menu">
+<span class="sig-name descname"><span class="pre">menu</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/game.html#Game.menu"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#game.Game.menu" title="Link to this definition"></a></dt>
+<dd><p>Muestra el menú principal del juego.</p>
+<p>Permite al jugador elegir entre jugar, ajustar opciones o salir del juego.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="game.Game.mostrar">
+<span class="sig-name descname"><span class="pre">mostrar</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/game.html#Game.mostrar"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#game.Game.mostrar" title="Link to this definition"></a></dt>
+<dd><p>Muestra el tablero en la ventana del juego.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="game.Game.opciones">
+<span class="sig-name descname"><span class="pre">opciones</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/game.html#Game.opciones"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#game.Game.opciones" title="Link to this definition"></a></dt>
+<dd><p>Muestra la pantalla de opciones.</p>
+<p>Permite al jugador elegir entre niveles de dificultad y volver al menú principal.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="game.Game.play">
+<span class="sig-name descname"><span class="pre">play</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/game.html#Game.play"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#game.Game.play" title="Link to this definition"></a></dt>
+<dd><p>Inicia el juego.</p>
+<p>Gestiona los eventos del juego mientras mientras se está jugando, muestra el tablero y termina el juego si es necesario.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="game.Game.run">
+<span class="sig-name descname"><span class="pre">run</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/game.html#Game.run"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#game.Game.run" title="Link to this definition"></a></dt>
+<dd><p>Inicia el juego de buscaminas.</p>
+<p>Inicializa Pygame, muestra el menú principal y maneja los eventos del juego.</p>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="casilla.html" class="btn btn-neutral float-left" title="casilla module" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="main.html" class="btn btn-neutral float-right" title="main module" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2023, Bryan Cortés, Adrían Angulo, Danny Solórzano.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>
