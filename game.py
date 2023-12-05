@@ -1,5 +1,6 @@
 import pygame
 import os
+import time
 from boton import Button
 from tablero import Tablero
 
@@ -28,6 +29,8 @@ class Game():
         - prob_bomba (float): Probabilidad de que una casilla contenga una bomba.
         - tamaño_casilla (tuple): Tamaño de cada casilla en píxeles.
         - screen (None): La superficie de la ventana se inicializa luego con la función actualizar_display().
+        - tiempo_final (float) : tiempo de inicio
+        - tiempo_inicial (float) : tiempo de finalizacion 
         - images (dict): Diccionario que relaciona nombres de imágenes a superficies.
         """
         self.tablero = None
@@ -35,6 +38,8 @@ class Game():
         self.size = (9,9)
         self.prob_bomba = 0.14 
         self.tamaño_casilla =  self.tamaño[0] // self.size[0], self.tamaño[1] // self.size[1]
+        self.tiempo_inicial = 0
+        self.tiempo_final = 0
         self.cargar_imagenes()
 
     def run(self):
@@ -56,10 +61,10 @@ class Game():
         while True:
             menu_posicion = pygame.mouse.get_pos()
             menu_texto = self.get_font(75).render("Buscaminas", True, "#b68f40")
-            MENU_RECT = menu_texto.get_rect(center=(400, 200))
-            boton_play = Button(image=pygame.image.load("assets/Play Rect.png"), pos=(400, 350), text_input="JUGAR", font=self.get_font(50), base_color="#d7fcd4", hovering_color="White")
-            boton_opciones = Button(image=pygame.image.load("assets/Options Rect.png"), pos=(400, 525),text_input="OPCIONES", font=self.get_font(50), base_color="#d7fcd4", hovering_color="White")
-            boton_salir = Button(image=pygame.image.load("assets/Quit Rect.png"), pos=(400, 700), text_input="QUIT", font=self.get_font(50), base_color="#d7fcd4", hovering_color="White")
+            MENU_RECT = menu_texto.get_rect(center=(440, 200))
+            boton_play = Button(image=pygame.image.load("assets/Play Rect.png"), pos=(440, 350), text_input="JUGAR", font=self.get_font(50), base_color="#d7fcd4", hovering_color="White")
+            boton_opciones = Button(image=pygame.image.load("assets/Options Rect.png"), pos=(440, 525),text_input="OPCIONES", font=self.get_font(50), base_color="#d7fcd4", hovering_color="White")
+            boton_salir = Button(image=pygame.image.load("assets/Quit Rect.png"), pos=(440, 700), text_input="QUIT", font=self.get_font(50), base_color="#d7fcd4", hovering_color="White")
             self.screen.blit(menu_texto, MENU_RECT)
 
             for button in [boton_play, boton_opciones, boton_salir]:
@@ -93,11 +98,11 @@ class Game():
         while True:
             opciones_pos = pygame.mouse.get_pos()
             opciones_texto = self.get_font(75).render("Opciones", True, "#b68f40")
-            MENU_RECT = opciones_texto.get_rect(center=(400, 100))
-            boton_facil = Button(image=pygame.image.load("assets/Play Rect.png"), pos=(400, 250), text_input="FACIL", font=self.get_font(50), base_color="#d7fcd4", hovering_color="White")
-            boton_medio = Button(image=pygame.image.load("assets/Play Rect.png"), pos=(400, 400),text_input="MEDIO", font=self.get_font(50), base_color="#d7fcd4", hovering_color="White")
-            boton_dificil = Button(image=pygame.image.load("assets/Play Rect.png"), pos=(400, 550), text_input="DIFICIL", font=self.get_font(50), base_color="#d7fcd4", hovering_color="White")
-            boton_exit = Button(image=pygame.image.load("assets/Quit Rect.png"), pos=(400, 700), text_input="ATRAS", font=self.get_font(50), base_color="#d7fcd4", hovering_color="White")
+            MENU_RECT = opciones_texto.get_rect(center=(440, 100))
+            boton_facil = Button(image=pygame.image.load("assets/Play Rect.png"), pos=(440, 250), text_input="FACIL", font=self.get_font(50), base_color="#d7fcd4", hovering_color="White")
+            boton_medio = Button(image=pygame.image.load("assets/Play Rect.png"), pos=(440, 400),text_input="MEDIO", font=self.get_font(50), base_color="#d7fcd4", hovering_color="White")
+            boton_dificil = Button(image=pygame.image.load("assets/Play Rect.png"), pos=(440, 550), text_input="DIFICIL", font=self.get_font(50), base_color="#d7fcd4", hovering_color="White")
+            boton_exit = Button(image=pygame.image.load("assets/Quit Rect.png"), pos=(440, 700), text_input="ATRAS", font=self.get_font(50), base_color="#d7fcd4", hovering_color="White")
             self.screen.blit(opciones_texto, MENU_RECT)
 
             for button in [boton_facil, boton_medio, boton_dificil, boton_exit]:
@@ -109,17 +114,23 @@ class Game():
                     pygame.quit()
                 if event.type == pygame.MOUSEBUTTONDOWN:
                     if boton_facil.checkForInput(opciones_pos):
-                        pass
                         self.size = (9,9)
                         self.prob_bomba = 0.14
+                        self.tablero = Tablero(self.size, self.prob_bomba)
+                        self.actualizar_display_juego()
+                        self.play()
                     if boton_medio.checkForInput(opciones_pos):
-                        pass
                         self.size = (10,10)
                         self.prob_bomba = 0.17
+                        self.tablero = Tablero(self.size, self.prob_bomba)
+                        self.actualizar_display_juego()
+                        self.play()
                     if boton_dificil.checkForInput(opciones_pos):
-                        pass
                         self.size = (12,12)
                         self.prob_bomba = 0.2
+                        self.tablero = Tablero(self.size, self.prob_bomba)
+                        self.actualizar_display_juego()
+                        self.play()
                     if boton_exit.checkForInput(opciones_pos):
                         self.menu()
             pygame.display.update()
@@ -130,6 +141,8 @@ class Game():
 
         Gestiona los eventos del juego mientras mientras se está jugando, muestra el tablero y termina el juego si es necesario.
         """
+        self.tiempo_inicial = time.time()
+        mensaje = ""
         running =  True
         while running:
             for event in pygame.event.get():
@@ -155,15 +168,26 @@ class Game():
 
         Permite al jugador volver a jugar o salir del juego.
         """
-        self.actualizar_display("HA " + mensaje)
+        if self.tablero.get_ganar():
+            self.tiempo_final = time.time()
+            tiempo =round(self.tiempo_final - self.tiempo_inicial,2)
+            self.actualizar_display("HA " + mensaje)
+            opciones_texto_tiempo = self.get_font(25).render("HAS DURADO " + str(tiempo) + " SEGUNDOS", True, "#b68f40")
+
+        else:
+            opciones_texto_tiempo = self.get_font(75).render("   ", True, "#b68f40")
+
 
         while True:
+
             opciones_pos = pygame.mouse.get_pos()
             opciones_texto = self.get_font(75).render("HA "+mensaje, True, "#b68f40")
-            MENU_RECT = opciones_texto.get_rect(center=(400, 100))
-            boton_volver = Button(image=pygame.image.load("assets/Play Rect.png"), pos=(400, 400), text_input="VOLVER A JUGAR", font=self.get_font(50), base_color="#d7fcd4", hovering_color="White")
-            boton_salir = Button(image=pygame.image.load("assets/Quit Rect.png"), pos=(400, 600), text_input="QUIT", font=self.get_font(50), base_color="#d7fcd4", hovering_color="White")
+            MENU_RECT = opciones_texto.get_rect(center=(440, 100))
+            menu_rect_tiempo = opciones_texto_tiempo.get_rect(center=(440, 200))
+            boton_volver = Button(image=pygame.image.load("assets/Options Rect.png"), pos=(440, 400), text_input="VOLVER A JUGAR", font=self.get_font(30), base_color="#d7fcd4", hovering_color="White")
+            boton_salir = Button(image=pygame.image.load("assets/Quit Rect.png"), pos=(440, 600), text_input="QUIT", font=self.get_font(50), base_color="#d7fcd4", hovering_color="White")
             self.screen.blit(opciones_texto, MENU_RECT)
+            self.screen.blit(opciones_texto_tiempo, menu_rect_tiempo)
 
             for button in [boton_volver, boton_salir]:
                 button.changeColor(opciones_pos)
@@ -174,11 +198,12 @@ class Game():
                     pygame.quit()
                 if event.type == pygame.MOUSEBUTTONDOWN:
                     if boton_volver.checkForInput(opciones_pos):
-                        pass
-                        self.menu()
+                        self.tablero = Tablero(self.size, self.prob_bomba)
+                        self.actualizar_display_juego()
+                        self.play()
                     if boton_salir.checkForInput(opciones_pos):
-                        pass
-                        pygame.quit()
+    
+                        self.menu()
             pygame.display.update()
 
     def mostrar(self):
