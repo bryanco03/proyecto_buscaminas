@@ -1,13 +1,12 @@
 from game import Game
 from tablero import Tablero
 
-#size = (9,9)
-#prob_bomba = 0.14
-#max_bombas = 10
-#tablero =  Tablero(size, prob_bomba, max_bombas)
-#tamaño = (800,880)
-
 game =  Game()
 game.run()
+"""
+Crea una instancia de la clase Game
 
+Con el método run() inicia el juego de buscaminas.
 
+Muestra el menú principal y maneja los eventos del juego.
+"""
