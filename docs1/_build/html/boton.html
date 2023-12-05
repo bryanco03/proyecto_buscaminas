@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="./">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>boton module &mdash; Buscaminas 05/12/23 documentation</title>
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=80d5e7a1" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=19f00094" />
+
+  
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="_static/jquery.js?v=5d32c60e"></script>
+        <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="_static/documentation_options.js?v=ea9e61f1"></script>
+        <script src="_static/doctools.js?v=888ff710"></script>
+        <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="casilla module" href="casilla.html" />
+    <link rel="prev" title="proyecto_buscaminas" href="modules.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="index.html" class="icon icon-home">
+            Buscaminas
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="modules.html">proyecto_buscaminas</a><ul class="current">
+<li class="toctree-l2 current"><a class="current reference internal" href="#">boton module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#boton.Button"><code class="docutils literal notranslate"><span class="pre">Button</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#boton.Button.changeColor"><code class="docutils literal notranslate"><span class="pre">Button.changeColor()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#boton.Button.checkForInput"><code class="docutils literal notranslate"><span class="pre">Button.checkForInput()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#boton.Button.update"><code class="docutils literal notranslate"><span class="pre">Button.update()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="casilla.html">casilla module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="game.html">game module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="main.html">main module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tablero.html">tablero module</a></li>
+</ul>
+</li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">Buscaminas</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="modules.html">proyecto_buscaminas</a></li>
+      <li class="breadcrumb-item active">boton module</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/boton.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="module-boton">
+<span id="boton-module"></span><h1>boton module<a class="headerlink" href="#module-boton" title="Link to this heading"></a></h1>
+<dl class="py class">
+<dt class="sig sig-object py" id="boton.Button">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">boton.</span></span><span class="sig-name descname"><span class="pre">Button</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">image</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pos</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">text_input</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">font</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">base_color</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">hovering_color</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/boton.html#Button"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#boton.Button" title="Link to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>Clase que representa un botón en la interfaz gráfica.</p>
+<p>Atributos:
+- image: Superficie de la imagen del botón.
+- x_pos: Posición horizontal del botón.
+- y_pos: Posición vertical del botón.
+- font: Fuente utilizada para el texto del botón.
+- base_color: Color del texto cuando no se pasa el mouse sobre el botón.
+- hovering_color: Color del texto cuando se pasa el mouse sobre el botón.
+- text_input: Texto que se muestra en el botón.
+- text: Superficie de texto utilizando la fuente y el color actual.
+- rect: Rectángulo que delimita el área del botón.
+- text_rect: Rectángulo que delimita el área del texto en el botón.</p>
+<p>Métodos:
+- __init__(image, pos, text_input, font, base_color, hovering_color): Inicializa una instancia de Button.
+- update(screen): Actualiza la representación del botón en la pantalla.
+- checkForInput(position): Verifica si la posición dada está dentro del área del botón.
+- changeColor(position): Cambia el color del texto del botón si el mouse está sobre él.</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="boton.Button.changeColor">
+<span class="sig-name descname"><span class="pre">changeColor</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">position</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/boton.html#Button.changeColor"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#boton.Button.changeColor" title="Link to this definition"></a></dt>
+<dd><p>Cambia el color del texto del botón si el mouse está sobre él.</p>
+<p>Parámetros:
+- position: (x, y) que representa la posición del mouse.</p>
+<p>Efecto:
+- Actualiza el color del texto del botón según la posición del mouse.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="boton.Button.checkForInput">
+<span class="sig-name descname"><span class="pre">checkForInput</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">position</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/boton.html#Button.checkForInput"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#boton.Button.checkForInput" title="Link to this definition"></a></dt>
+<dd><p>Verifica si la posición dada está dentro del área del botón.</p>
+<p>Parámetros:
+- position: (x, y) que representa la posición a verificar.</p>
+<p>Retorna:
+- True si la posición está dentro del área del botón, False de lo contrario.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="boton.Button.update">
+<span class="sig-name descname"><span class="pre">update</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">screen</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/boton.html#Button.update"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#boton.Button.update" title="Link to this definition"></a></dt>
+<dd><p>Actualiza la representación visual del botón en la pantalla.</p>
+<p>Parámetros:
+- screen: Superficie de la pantalla donde se representa el botón.</p>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="modules.html" class="btn btn-neutral float-left" title="proyecto_buscaminas" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="casilla.html" class="btn btn-neutral float-right" title="casilla module" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2023, Bryan Cortés, Adrían Angulo, Danny Solórzano.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

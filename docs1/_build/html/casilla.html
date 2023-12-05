@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="./">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>casilla module &mdash; Buscaminas 05/12/23 documentation</title>
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=80d5e7a1" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=19f00094" />
+
+  
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="_static/jquery.js?v=5d32c60e"></script>
+        <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="_static/documentation_options.js?v=ea9e61f1"></script>
+        <script src="_static/doctools.js?v=888ff710"></script>
+        <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="game module" href="game.html" />
+    <link rel="prev" title="boton module" href="boton.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="index.html" class="icon icon-home">
+            Buscaminas
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="modules.html">proyecto_buscaminas</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="boton.html">boton module</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">casilla module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#casilla.Casilla"><code class="docutils literal notranslate"><span class="pre">Casilla</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#casilla.Casilla.click"><code class="docutils literal notranslate"><span class="pre">Casilla.click()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#casilla.Casilla.get_bandera"><code class="docutils literal notranslate"><span class="pre">Casilla.get_bandera()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#casilla.Casilla.get_bomba"><code class="docutils literal notranslate"><span class="pre">Casilla.get_bomba()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#casilla.Casilla.get_clicked"><code class="docutils literal notranslate"><span class="pre">Casilla.get_clicked()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#casilla.Casilla.get_num_alrededor"><code class="docutils literal notranslate"><span class="pre">Casilla.get_num_alrededor()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#casilla.Casilla.get_vecinos"><code class="docutils literal notranslate"><span class="pre">Casilla.get_vecinos()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#casilla.Casilla.set_num_alrededor"><code class="docutils literal notranslate"><span class="pre">Casilla.set_num_alrededor()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#casilla.Casilla.set_vecinos"><code class="docutils literal notranslate"><span class="pre">Casilla.set_vecinos()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#casilla.Casilla.toggle_bandera"><code class="docutils literal notranslate"><span class="pre">Casilla.toggle_bandera()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="game.html">game module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="main.html">main module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tablero.html">tablero module</a></li>
+</ul>
+</li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">Buscaminas</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="modules.html">proyecto_buscaminas</a></li>
+      <li class="breadcrumb-item active">casilla module</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/casilla.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="module-casilla">
+<span id="casilla-module"></span><h1>casilla module<a class="headerlink" href="#module-casilla" title="Link to this heading"></a></h1>
+<dl class="py class">
+<dt class="sig sig-object py" id="casilla.Casilla">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">casilla.</span></span><span class="sig-name descname"><span class="pre">Casilla</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">bomba</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/casilla.html#Casilla"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#casilla.Casilla" title="Link to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>Clase que representa una casilla en el juego.</p>
+<p>Atributos:
+- bomba (bool): Indica si la casilla contiene una bomba.
+- clicked (bool): Indica si la casilla ha sido seleccionada por el jugador.
+- bandera (bool): Indica si se ha colocado una bandera en la casilla.
+- vecinos (list): Lista de casillas vecinas a la actual.
+- num_alrededor (int): Número de bombas alrededor de la casilla.</p>
+<p>Métodos:
+- get_bomba(): Retorna el valor del atributo ‘bomba’.
+- get_clicked(): Retorna el valor del atributo ‘clicked’.
+- get_bandera(): Retorna el valor del atributo ‘bandera’.
+- set_vecinos(vecinos): Establece la lista de casillas vecinas y actualiza ‘num_alrededor’.
+- set_num_alrededor(): Calcula el número de bombas alrededor de la casilla.
+- get_num_alrededor(): Retorna el valor del atributo ‘num_alrededor’.
+- toggle_bandera(): Cambia el estado del atributo ‘bandera’.
+- click(): Marca la casilla como seleccionada por el jugador.
+- get_vecinos(): Retorna la lista de casillas vecinas.</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="casilla.Casilla.click">
+<span class="sig-name descname"><span class="pre">click</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/casilla.html#Casilla.click"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#casilla.Casilla.click" title="Link to this definition"></a></dt>
+<dd><p>Marca la casilla como seleccionada por el jugador.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="casilla.Casilla.get_bandera">
+<span class="sig-name descname"><span class="pre">get_bandera</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/casilla.html#Casilla.get_bandera"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#casilla.Casilla.get_bandera" title="Link to this definition"></a></dt>
+<dd><p>Retorna el valor del atributo ‘bandera’.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="casilla.Casilla.get_bomba">
+<span class="sig-name descname"><span class="pre">get_bomba</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/casilla.html#Casilla.get_bomba"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#casilla.Casilla.get_bomba" title="Link to this definition"></a></dt>
+<dd><p>Retorna el valor del atributo ‘bomba’.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="casilla.Casilla.get_clicked">
+<span class="sig-name descname"><span class="pre">get_clicked</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/casilla.html#Casilla.get_clicked"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#casilla.Casilla.get_clicked" title="Link to this definition"></a></dt>
+<dd><p>Retorna el valor del atributo ‘clicked’.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="casilla.Casilla.get_num_alrededor">
+<span class="sig-name descname"><span class="pre">get_num_alrededor</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/casilla.html#Casilla.get_num_alrededor"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#casilla.Casilla.get_num_alrededor" title="Link to this definition"></a></dt>
+<dd><p>Retorna el valor del atributo ‘num_alrededor’.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="casilla.Casilla.get_vecinos">
+<span class="sig-name descname"><span class="pre">get_vecinos</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/casilla.html#Casilla.get_vecinos"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#casilla.Casilla.get_vecinos" title="Link to this definition"></a></dt>
+<dd><p>Retorna la lista de casillas vecinas.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="casilla.Casilla.set_num_alrededor">
+<span class="sig-name descname"><span class="pre">set_num_alrededor</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/casilla.html#Casilla.set_num_alrededor"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#casilla.Casilla.set_num_alrededor" title="Link to this definition"></a></dt>
+<dd><p>Calcula el número de bombas alrededor de la casilla.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="casilla.Casilla.set_vecinos">
+<span class="sig-name descname"><span class="pre">set_vecinos</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">vecinos</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/casilla.html#Casilla.set_vecinos"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#casilla.Casilla.set_vecinos" title="Link to this definition"></a></dt>
+<dd><p>Establece la lista de casillas vecinas y actualiza ‘num_alrededor’.</p>
+<p>Parámetros:
+- vecinos (list): Lista de casillas vecinas.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="casilla.Casilla.toggle_bandera">
+<span class="sig-name descname"><span class="pre">toggle_bandera</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/casilla.html#Casilla.toggle_bandera"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#casilla.Casilla.toggle_bandera" title="Link to this definition"></a></dt>
+<dd><p>Cambia el estado del atributo ‘bandera’.</p>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="boton.html" class="btn btn-neutral float-left" title="boton module" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="game.html" class="btn btn-neutral float-right" title="game module" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2023, Bryan Cortés, Adrían Angulo, Danny Solórzano.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

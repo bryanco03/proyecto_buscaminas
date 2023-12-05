@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>tablero &mdash; Buscaminas 05/12/23 documentation</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=80d5e7a1" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=19f00094" />
+
+  
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="../_static/jquery.js?v=5d32c60e"></script>
+        <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="../_static/documentation_options.js?v=ea9e61f1"></script>
+        <script src="../_static/doctools.js?v=888ff710"></script>
+        <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            Buscaminas
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../modules.html">proyecto_buscaminas</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Buscaminas</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="index.html">Module code</a></li>
+      <li class="breadcrumb-item active">tablero</li>
+      <li class="wy-breadcrumbs-aside">
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <h1>Source code for tablero</h1><div class="highlight"><pre>
+<span></span><span class="kn">from</span> <span class="nn">casilla</span> <span class="kn">import</span> <span class="n">Casilla</span>
+<span class="kn">from</span> <span class="nn">random</span> <span class="kn">import</span> <span class="n">random</span>
+
+
+<div class="viewcode-block" id="Tablero">
+<a class="viewcode-back" href="../tablero.html#tablero.Tablero">[docs]</a>
+<span class="k">class</span> <span class="nc">Tablero</span><span class="p">():</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Clase que representa el tablero del juego.</span>
+
+<span class="sd">    Atributos:</span>
+<span class="sd">    - tamaño (tuple): Tupla que indica las dimensiones del tablero (filas, columnas).</span>
+<span class="sd">    - prob_bomba (float): Probabilidad de que una casilla contenga una bomba.</span>
+<span class="sd">    - perder (bool): Indica si el jugador ha perdido el juego.</span>
+<span class="sd">    - ganar (bool): Indica si el jugador ha ganado el juego.</span>
+<span class="sd">    - num_clicked (int): Número de casillas clicadas por el jugador.</span>
+<span class="sd">    - num_nobombas (int): Número de casillas sin bomba en el tablero.</span>
+<span class="sd">    - tablero (list): Lista (bidimensional) que representa el tablero de casillas.</span>
+
+<span class="sd">    Métodos:</span>
+<span class="sd">    - __init__(tamaño, prob_bomba): Inicializa una instancia de Tablero.</span>
+<span class="sd">    - set_tablero(): Crea el tablero y coloca las bombas según la probabilidad.</span>
+<span class="sd">    - set_casillas_cercanas(): Asigna las casillas vecinas a cada casilla en el tablero.</span>
+<span class="sd">    - get_lista_vecinos(index): Retorna la lista de casillas vecinas a la casilla en la posición dada.</span>
+<span class="sd">    - get_size(): Retorna las dimensiones del tablero.</span>
+<span class="sd">    - get_casilla(index): Retorna la casilla en la posición dada.</span>
+<span class="sd">    - handleclick(casilla, bandera): Maneja la interacción del jugador con una casilla.</span>
+<span class="sd">    - get_perder(): Retorna si el jugador ha perdido el juego.</span>
+<span class="sd">    - get_ganar(): Retorna si el jugador ha ganado el juego.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">tamaño</span><span class="p">,</span> <span class="n">prob_bomba</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Inicializa una instancia de Tablero.</span>
+
+<span class="sd">        Parámetros:</span>
+<span class="sd">        - tamaño (tuple): Tupla que indica las dimensiones del tablero (filas, columnas).</span>
+<span class="sd">        - prob_bomba (float): Probabilidad de que una casilla contenga una bomba.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">tamaño</span> <span class="o">=</span> <span class="n">tamaño</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">prob_bomba</span> <span class="o">=</span> <span class="n">prob_bomba</span> 
+        <span class="bp">self</span><span class="o">.</span><span class="n">perder</span> <span class="o">=</span> <span class="kc">False</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">ganar</span> <span class="o">=</span> <span class="kc">False</span> 
+        <span class="bp">self</span><span class="o">.</span><span class="n">num_clicked</span> <span class="o">=</span> <span class="mi">0</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">num_nobombas</span> <span class="o">=</span> <span class="mi">0</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">set_tablero</span><span class="p">()</span>
+
+
+<div class="viewcode-block" id="Tablero.set_tablero">
+<a class="viewcode-back" href="../tablero.html#tablero.Tablero.set_tablero">[docs]</a>
+    <span class="k">def</span> <span class="nf">set_tablero</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Crea el tablero y coloca las bombas según la probabilidad dada.&quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">tablero</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="k">for</span> <span class="n">row</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">tamaño</span><span class="p">[</span><span class="mi">0</span><span class="p">]):</span>
+            <span class="n">row</span> <span class="o">=</span> <span class="p">[]</span>
+            <span class="k">for</span> <span class="n">col</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">tamaño</span><span class="p">[</span><span class="mi">1</span><span class="p">]):</span>
+                <span class="n">bomba</span> <span class="o">=</span> <span class="n">random</span><span class="p">()</span> <span class="o">&lt;</span> <span class="bp">self</span><span class="o">.</span><span class="n">prob_bomba</span>
+                <span class="k">if</span> <span class="p">(</span><span class="ow">not</span> <span class="n">bomba</span><span class="p">):</span>
+                    <span class="bp">self</span><span class="o">.</span><span class="n">num_nobombas</span> <span class="o">+=</span><span class="mi">1</span>
+                <span class="n">casilla</span> <span class="o">=</span> <span class="n">Casilla</span><span class="p">(</span><span class="n">bomba</span><span class="p">)</span>
+                <span class="n">row</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">casilla</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">tablero</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">row</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">set_casillas_cercanas</span><span class="p">()</span></div>
+
+
+<div class="viewcode-block" id="Tablero.set_casillas_cercanas">
+<a class="viewcode-back" href="../tablero.html#tablero.Tablero.set_casillas_cercanas">[docs]</a>
+    <span class="k">def</span> <span class="nf">set_casillas_cercanas</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Asigna las casillas vecinas a cada casilla en el tablero.&quot;&quot;&quot;</span>
+        <span class="k">for</span> <span class="n">row</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">tamaño</span><span class="p">[</span><span class="mi">0</span><span class="p">]):</span>
+            <span class="k">for</span> <span class="n">col</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">tamaño</span><span class="p">[</span><span class="mi">1</span><span class="p">]):</span>
+                <span class="n">casilla</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_casilla</span><span class="p">((</span><span class="n">row</span><span class="p">,</span><span class="n">col</span><span class="p">))</span>
+                <span class="n">vecinos</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_lista_vecinos</span><span class="p">((</span><span class="n">row</span><span class="p">,</span><span class="n">col</span><span class="p">))</span>
+                <span class="n">casilla</span><span class="o">.</span><span class="n">set_vecinos</span><span class="p">(</span><span class="n">vecinos</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="Tablero.get_lista_vecinos">
+<a class="viewcode-back" href="../tablero.html#tablero.Tablero.get_lista_vecinos">[docs]</a>
+    <span class="k">def</span> <span class="nf">get_lista_vecinos</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">index</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Retorna la lista de casillas vecinas a la casilla en la posición dada.</span>
+
+<span class="sd">        Parámetros:</span>
+<span class="sd">        - index (tuple): Posición de la casilla en el tablero.</span>
+
+<span class="sd">        Retorna:</span>
+<span class="sd">        - Lista de casillas vecinas.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">vecinos</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="k">for</span> <span class="n">row</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">index</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="n">index</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">+</span><span class="mi">2</span><span class="p">):</span>
+            <span class="k">for</span> <span class="n">col</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">index</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="n">index</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">+</span><span class="mi">2</span><span class="p">):</span>
+                <span class="n">fuera_rango</span> <span class="o">=</span> <span class="n">row</span> <span class="o">&lt;</span> <span class="mi">0</span> <span class="ow">or</span> <span class="n">row</span> <span class="o">&gt;=</span> <span class="bp">self</span><span class="o">.</span><span class="n">tamaño</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="ow">or</span> <span class="n">col</span> <span class="o">&lt;</span> <span class="mi">0</span> <span class="ow">or</span> <span class="n">col</span> <span class="o">&gt;=</span> <span class="bp">self</span><span class="o">.</span><span class="n">tamaño</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+                <span class="n">fuera_rango2</span> <span class="o">=</span> <span class="n">row</span> <span class="o">==</span> <span class="n">index</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="ow">and</span> <span class="n">col</span> <span class="o">==</span> <span class="n">index</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+                <span class="k">if</span> <span class="n">fuera_rango</span> <span class="ow">or</span> <span class="n">fuera_rango2</span><span class="p">:</span>
+                    <span class="k">continue</span>
+                <span class="n">vecinos</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">get_casilla</span><span class="p">((</span><span class="n">row</span><span class="p">,</span><span class="n">col</span><span class="p">)))</span>
+        <span class="k">return</span> <span class="n">vecinos</span></div>
+
+
+<div class="viewcode-block" id="Tablero.get_size">
+<a class="viewcode-back" href="../tablero.html#tablero.Tablero.get_size">[docs]</a>
+    <span class="k">def</span> <span class="nf">get_size</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Retorna las dimensiones del tablero.&quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">tamaño</span></div>
+
+
+<div class="viewcode-block" id="Tablero.get_casilla">
+<a class="viewcode-back" href="../tablero.html#tablero.Tablero.get_casilla">[docs]</a>
+    <span class="k">def</span> <span class="nf">get_casilla</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">index</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Retorna la casilla en la posición dada.</span>
+
+<span class="sd">        Parámetros:</span>
+<span class="sd">        - index (tuple): Posición de la casilla en el tablero.</span>
+
+<span class="sd">        Retorna:</span>
+<span class="sd">        - Casilla en la posición dada.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">tablero</span><span class="p">[</span><span class="n">index</span><span class="p">[</span><span class="mi">0</span><span class="p">]][</span><span class="n">index</span><span class="p">[</span><span class="mi">1</span><span class="p">]]</span></div>
+
+
+<div class="viewcode-block" id="Tablero.handleclick">
+<a class="viewcode-back" href="../tablero.html#tablero.Tablero.handleclick">[docs]</a>
+    <span class="k">def</span> <span class="nf">handleclick</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">casilla</span><span class="p">,</span> <span class="n">bandera</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Maneja la interacción del jugador con una casilla.</span>
+
+<span class="sd">        Parámetros:</span>
+<span class="sd">        - casilla (Casilla): Casilla con la que interactúa el jugador.</span>
+<span class="sd">        - bandera (bool): Indica si se ha colocado una bandera.</span>
+
+<span class="sd">        Efecto:</span>
+<span class="sd">        - Actualiza el estado del juego según la interacción del jugador.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="p">(</span><span class="n">casilla</span><span class="o">.</span><span class="n">get_clicked</span><span class="p">())</span> <span class="ow">or</span> <span class="p">(</span><span class="ow">not</span> <span class="n">bandera</span> <span class="ow">and</span> <span class="n">casilla</span><span class="o">.</span><span class="n">get_bandera</span><span class="p">()):</span>
+            <span class="k">return</span> 
+        <span class="k">if</span> <span class="n">bandera</span><span class="p">:</span>
+            <span class="n">casilla</span><span class="o">.</span><span class="n">toggle_bandera</span><span class="p">()</span>
+            <span class="k">return</span>
+        <span class="n">casilla</span><span class="o">.</span><span class="n">click</span><span class="p">()</span>
+        <span class="k">if</span> <span class="n">casilla</span><span class="o">.</span><span class="n">get_bomba</span><span class="p">():</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">perder</span> <span class="o">=</span>  <span class="kc">True</span>
+            <span class="k">return</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">num_clicked</span> <span class="o">+=</span><span class="mi">1</span>
+        <span class="k">if</span> <span class="n">casilla</span><span class="o">.</span><span class="n">get_num_alrededor</span><span class="p">()</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="k">return</span>
+        <span class="k">for</span> <span class="n">vecino</span> <span class="ow">in</span> <span class="n">casilla</span><span class="o">.</span><span class="n">get_vecinos</span><span class="p">():</span>
+            <span class="k">if</span> <span class="ow">not</span> <span class="n">vecino</span><span class="o">.</span><span class="n">get_bomba</span><span class="p">()</span> <span class="ow">and</span> <span class="ow">not</span> <span class="n">vecino</span><span class="o">.</span><span class="n">get_clicked</span><span class="p">():</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">handleclick</span><span class="p">(</span><span class="n">vecino</span><span class="p">,</span><span class="kc">False</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="Tablero.get_perder">
+<a class="viewcode-back" href="../tablero.html#tablero.Tablero.get_perder">[docs]</a>
+    <span class="k">def</span> <span class="nf">get_perder</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Retorna si el jugador ha perdido el juego.&quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">perder</span></div>
+
+
+<div class="viewcode-block" id="Tablero.get_ganar">
+<a class="viewcode-back" href="../tablero.html#tablero.Tablero.get_ganar">[docs]</a>
+    <span class="k">def</span> <span class="nf">get_ganar</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Retorna si el jugador ha ganado el juego.&quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">num_clicked</span> <span class="o">==</span> <span class="bp">self</span><span class="o">.</span><span class="n">num_nobombas</span></div>
+</div>
+
+</pre></div>
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2023, Bryan Cortés, Adrían Angulo, Danny Solórzano.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>
