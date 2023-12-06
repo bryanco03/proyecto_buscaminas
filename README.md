@@ -9,6 +9,7 @@ Este es un juego de Buscaminas implementado en Python utilizando la biblioteca P
 
 ## Instalación de Dependencias
 Asegúrese de tener Python 3 instalado. Luego, instale la biblioteca `pygame`. Las bibliotecas `random` y `os` no es necesario instalarlas porque son estándar. Puede instalar `pygame` ejecutando el siguiente comando:  
+
 `pip install pygame`
 
 ## Ejecución del Programa
