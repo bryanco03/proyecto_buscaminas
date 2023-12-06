@@ -8,16 +8,15 @@ Este es un juego de Buscaminas implementado en Python utilizando la biblioteca P
 - Módulos de python: `pygame`, `random` y `os`.
 
 ## Instalación de Dependencias
-Asegúrese de tener Python 3 instalado. Luego, instale las bibliotecas `pygame`, `random` y `os` ejecutando el siguiente comando:  
-
-`pip install pygame random os`
+Asegúrese de tener Python 3 instalado. Luego, instale la biblioteca `pygame`. Las bibliotecas `random` y `os` no es necesario instalarlas porque son estándar. Puede instalar `pygame` ejecutando el siguiente comando:  
+`pip install pygame`
 
 ## Ejecución del Programa
 -Clone o descargue este repositorio en su máquina local.  
 -Abra una terminal en la carpeta del proyecto.  
 -Para ejecutar el juego ejecute el siguiente comando:  
 
-`python main.py`
+`python3 main.py`
 
 ## Instrucciones de Juego
 -El objetivo es descubrir todas las casillas que no contienen bombas.  
